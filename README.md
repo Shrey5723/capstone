@@ -220,7 +220,7 @@ kubectl get pods -l app=sandbox
 | Socket.IO | `terminal-input` | Sends user keystrokes / commands to the container bash PTY |
 | Socket.IO | `terminal-output` | Emits stdout / stderr from the container bash PTY |
 
----
+<!-- ---
 
 ## Known Limitations
 
@@ -231,7 +231,7 @@ This platform was built as an architectural capstone project and is not yet prod
 - **File API path validation:** The sandbox agent does not strictly enforce boundary checks preventing paths escaping `/workspace`.
 - **`check_app` is a stub:** Returns a static `{ status: "ok" }` response rather than inspecting Vite compiler logs.
 - **Shared terminal session:** All clients connected to the same sandbox share a single `node-pty` instance, and client terminal resize geometry is not synced.
-- **Ephemeral chat state:** Conversation history is stored in client React state and is reset on page refresh.
+- **Ephemeral chat state:** Conversation history is stored in client React state and is reset on page refresh. -->
 
 ---
 
@@ -259,11 +259,6 @@ Synchronized split-pane interface with AI chat on the left and instant Vite HMR 
 ### 3. In-Browser Terminal
 Full interactive bash terminal session powered by `node-pty`, Socket.IO, and `@xterm/xterm`:
 ![Interactive Bash Terminal](docs/screenshots/live-terminal.png)
-
-### 4. AI Code Generation & Real-Time App Building
-Natural language prompt generating an interactive React app live inside the micro-sandbox:
-![AI Generating Interactive React App](docs/screenshots/ai-generated-app.png)
-
 
 ---
 
