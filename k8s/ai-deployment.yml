@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: ai-deployment
+  labels:
+    name: ai-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: ai-server
+
+  template:
+    metadata:
+      labels:
+        app: ai-server
+
+    spec:
+      serviceAccountName: resource-manager
+
+      containers:
+        - image: ai-orchestration
+          imagePullPolicy: IfNotPresent
+          name: ai-server
+
+          # Provider switch and API keys injected from Kubernetes Secret
+          env:
+          - name: MODEL_PROVIDER
+            value: "gemini"
+          - name: MODEL_NAME
+            value: "gemini-3.5-flash-lite"
+          - name: GOOGLE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: GOOGLE_API_KEY
+                optional: true
+          - name: GROQ_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: GROQ_API_KEY
+                optional: true
+          - name: MISTRAL_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: MISTRAL_API_KEY
+                optional: true
+
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "400Mi"
+            requests:
+              cpu: "250m"
+              memory: "200Mi"
+
+          livenessProbe:
+            httpGet:
+              path: /api/status/healthz
+              port: 3000
+            initialDelaySeconds: 90
+            timeoutSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /api/status/readyz
+              port: 3000
+            initialDelaySeconds: 30
+            timeoutSeconds: 10
+
+          ports:
+            - containerPort: 3000
+              name: ai-server-port

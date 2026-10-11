@@ -1,0 +1,12 @@
+# Local overrides and secrets
+*.local.yml
+*.local.yaml
+*.secret.yml
+*.secret.yaml
+.env
+.env.*
+
+# OS and Editor files
+.DS_Store
+.idea/
+.vscode/

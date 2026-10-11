@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.*
+!.env.example
+
+# Audit reports & temp files
+audit-report.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS and Editor files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+
+# Test and Coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.eslintcache

@@ -1,0 +1,73 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.*
+!.env.example
+
+# Build and production outputs
+dist/
+dist-ssr/
+build/
+out/
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Editor and IDE directories
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swo
+*.swp
+
+# Archive and compressed files
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
+# Test and coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.eslintcache
+.npm/
+
+# Binary & disk image files
+*.img
+*.bin
+*.iso
+
+# Audit reports & temp generated files
+audit-report.json
+
+PROJECT_ANALYSIS.md
+sandbox_frontend_plan.md

@@ -1,0 +1,26 @@
+FROM node:22-bullseye
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    make \
+    g++ \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY package*.json ./
+
+# Download all packages — skips audit/fund network calls for speed
+# BuildKit npm cache persists between builds so download only happens ONCE
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci --legacy-peer-deps --no-audit --no-fund --ignore-scripts
+
+# Compile only node-pty (the one native C++ addon) — cached by Docker layer
+RUN npm rebuild node-pty
+
+COPY . .
+EXPOSE 3000
+
+RUN mkdir -p /workspace
+
+CMD ["node","server.js"]

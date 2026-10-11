@@ -1,0 +1,6 @@
+node_modules
+.env
+boot.img
+stage2.bin
+*.img
+*.bin
