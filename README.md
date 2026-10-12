@@ -4,7 +4,7 @@ Describe an app in chat. An AI agent writes the code inside an isolated Kubernet
 
 Each sandbox is its own Kubernetes Pod with a Vite + React dev server, a real bash terminal, and a file API. A LangChain tool-calling agent edits the project files, and Vite hot-reloads the preview as the code changes.
 
-![AI Cloud Sandbox Live Demo](docs/screenshots/ai-generated-app.png)
+![AI Cloud Sandbox Live Demo](docs/screenshots/split-preview.png)
 
 
 ---
